@@ -1,0 +1,47 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <label> select all 
+            <input onClick="selectAll()" id='select-all' type='checkbox'>
+        </label>
+     
+        <label> deselect all 
+            <input onClick="deselectAll()" id='select-all' type='checkbox'>
+        </label>
+        <br>
+
+        <label> Seattle
+            <input onClick="deselect()" id='checkbox' type='checkbox'>
+        </label>
+                <br>
+
+        <label> Washington
+            <input onClick="deselect()" id='checkbox' type='checkbox'>
+        </label>
+                <br>
+
+        <label> San Francisco
+            <input onClick="deselect()" id='checkbox' type='checkbox'>
+        </label>
+        <script>
+            function selectAll() {
+                let checkBoxes = document.getElementsByTagName('input');
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    checkBoxes[i].checked = true;
+                }
+            }
+            function deselectAll() {
+                let checkBoxes = document.getElementsByTagName('input');
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    checkBoxes[i].checked = false;
+                }
+            }
+
+            function deselect() {
+                let selectAll = document.getElementById("select-all");
+                selectAll.checked = false;
+            }
+        </script>
+    </body>
+</html>
