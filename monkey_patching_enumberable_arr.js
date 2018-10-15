@@ -9,6 +9,8 @@ initialValue is optional and should default to the first element of the array if
 examples:
 */
 
+
+
 Array.prototype.myEach = function(cb) {
         for ( let i = 0; i < this.length; i ++) {
             cb(this[i]);
