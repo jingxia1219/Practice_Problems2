@@ -8,7 +8,7 @@ Array#myReduce(callback[, initialValue]) - (like Ruby's Array#inject) receives a
 initialValue is optional and should default to the first element of the array if not provided
 examples:
 */
-
+//
 
 
 Array.prototype.myEach = function(cb) {
