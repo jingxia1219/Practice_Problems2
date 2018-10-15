@@ -8,7 +8,6 @@ Array#myReduce(callback[, initialValue]) - (like Ruby's Array#inject) receives a
 initialValue is optional and should default to the first element of the array if not provided
 examples:
 */
-//
 
 
 Array.prototype.myEach = function(cb) {
@@ -17,7 +16,18 @@ Array.prototype.myEach = function(cb) {
         }
 };
 
-[1,2,3].myEach(function (el) {
-    console.log((el*el)); 
-}); // tested and works
+console.log([1,2,3].myEach(function (el) {
+    return (el*el); 
+})); // tested and works
 
+Array.prototype.myMap = function (cb) {
+    let result = []
+    for ( let i = 0; i < this.length; i++) {    
+        result.push(cb(this[i]));
+    }
+    return result;
+}
+
+console.log([1,2,3].myMap(function (el) {
+    return (el*el); 
+}));
