@@ -11,23 +11,38 @@ examples:
 
 
 Array.prototype.myEach = function(cb) {
-        for ( let i = 0; i < this.length; i ++) {
-            cb(this[i]);
-        }
+    for (let i = 0; i < this.length; i++) {
+        cb(this[i]);
+    }
 };
 
-console.log([1,2,3].myEach(function (el) {
-    return (el*el); 
+console.log([1, 2, 3].myEach(function(el) {
+    return (el * el);
 })); // tested and works
 
-Array.prototype.myMap = function (cb) {
+Array.prototype.myMap = function(cb) {
     let result = []
-    for ( let i = 0; i < this.length; i++) {    
+    for (let i = 0; i < this.length; i++) {
         result.push(cb(this[i]));
     }
     return result;
 }
 
-console.log([1,2,3].myMap(function (el) {
-    return (el*el); 
+console.log([1, 2, 3].myMap(function(el) {
+    return (el * el);
 }));
+
+Array.prototype.myReduce = function(cb, acc) {
+    var i = 0;
+    if (acc === undefined) {
+        let acc = this[0];
+        i = 1;
+    }
+    for (i < this.length; i++;) {
+
+    }
+}
+
+console.log([1, 2, 3].myReduce(function(acc, el) {
+    return (acc * el);
+}))
