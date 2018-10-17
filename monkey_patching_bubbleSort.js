@@ -21,3 +21,15 @@ Array.prototype.bubbleSort = function() {
 }
 
 console.log([3, 2, 1, 5, 7].bubbleSort()); // tested and works
+
+String.prototype.subStrings = function() {
+    let result = [];
+    for (let i = 0; i <= this.length; i++) {
+        for (let j = i + 1; j <= this.length; j++) {
+            result.push(this.slice(i, j));
+        }
+    }
+    return result;
+}
+
+console.log('cat'.subStrings()); //tested and works
