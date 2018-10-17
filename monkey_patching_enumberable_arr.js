@@ -74,3 +74,7 @@ console.log([1, 3, 4].myReduce(
         return (acc + el);
     }, 1
 ));
+
+console.log([1, 2, 3].myReduce(function(acc, el) {
+    return acc + el;
+}, 25));
