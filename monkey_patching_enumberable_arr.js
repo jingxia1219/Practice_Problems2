@@ -43,6 +43,34 @@ Array.prototype.myReduce = function(cb, acc) {
     }
 }
 
-console.log([1, 2, 3].myReduce(function(acc, el) {
+Array.prototype.myReduce = function(cb, optionalAcc) {
+    let acc = null;
+    let i = 0;
+    if (optionalAcc) {
+        acc = optionalAcc;
+        // console.log("a", acc);
+    } else {
+        acc = this[0];
+        // console.log("b", acc);
+        i++;
+    }
+    // console.log(acc);
+    // console.log(i);
+    for (let j = i; j < this.length; j++) {
+        // console.log("i", i;)
+        console.log("acc1", acc);
+        acc = cb(acc, this[j]);
+    }
+    console.log("acc", acc);
+    return acc;
+}
+
+console.log([2, 3, 4].myReduce(function(acc, el) {
     return (acc * el);
-}))
+}));
+
+console.log([1, 3, 4].myReduce(
+    function(acc, el) {
+        return (acc + el);
+    }, 1
+));
