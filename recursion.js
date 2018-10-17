@@ -24,3 +24,15 @@ function exponent(base, exp) {
 }
 
 console.log(exponent(2, 3)); //tested and works
+
+function fibonacci(n) {
+    let fibs = [1, 1]
+    if (n <= 2) {
+        return fibs.slice(2 - n);
+    }
+    return fibonacci(n - 1).concat(parseInt(fibonacci(n - 1).slice(-1)) + parseInt(fibonacci(n - 1).slice(-2)[0])); //.slice(-2) gets the last two elements
+}
+
+console.log(fibonacci(2).slice(-1));
+console.log(fibonacci(3));
+console.log(fibonacci(4)); // tested and works
