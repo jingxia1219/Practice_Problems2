@@ -36,3 +36,7 @@ function fibonacci(n) {
 console.log(fibonacci(2).slice(-1));
 console.log(fibonacci(3));
 console.log(fibonacci(4)); // tested and works
+
+function deepDup(arr) {
+    
+}
