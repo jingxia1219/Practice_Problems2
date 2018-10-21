@@ -1,0 +1,12 @@
+<!-- error handling in javascript, once error happens, it will
+print on the scren -->
+
+<p id='demo'></p>
+<script>
+    try {
+        adsfsd('welcome guest!');
+    }
+    catch(err) {
+        document.getElementById("demo").innerHTML = err.message;
+    }
+</script>
