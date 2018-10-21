@@ -11,6 +11,13 @@ function Cat(name) {
 
   console.log(l2.greeting); //hi s2
 
+  var num = 0;
+
+for (var i =0l i<5; i++) {
+  num += i;
+}
+//with var, it works, cos the scope of var variable is the whole function
+// while the scope of let variavle is to its own little scope
 
   var num = 0;
 
