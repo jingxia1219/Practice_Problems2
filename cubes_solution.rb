@@ -26,7 +26,7 @@ def cubes_solution
           end 
           c+=1
       end 
-     p result.keys.select { |el| el.uniq.length > 2}
+     p result.keys 
     end 
     # time compleixty O(n^2)
     cubes_solution
