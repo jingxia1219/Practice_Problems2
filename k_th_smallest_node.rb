@@ -7,19 +7,7 @@ class Node
         @right.parent = self if @right 
         @parent = parent
     end 
-    
-    def insert(node)
-        if node.val < self.val 
-            
-        else 
-            
-        end 
-    end 
-    
-    def delete(val)
-        
-    end 
-    
+=    
 end 
 #node2 = Node.new(2)
 #left1 = Node.new(1,nil,node2)
@@ -33,6 +21,25 @@ node4 = Node.new(4)
 node3 = Node.new(3,node2, node4)
 node6 = Node.new(6)
 node5 = Node.new(5,node3,node6)
+
+class BST 
+    attr_accessor :root
+    def initialize(root)
+        @root = root 
+    end 
+
+    def insert(node)
+        if node.val < self.val 
+            
+        else 
+            
+        end 
+    end 
+    
+    def delete(val)
+        
+    end 
+end 
 
 def kth_smallest(node,k)
     smallest = get_smallest(node)
