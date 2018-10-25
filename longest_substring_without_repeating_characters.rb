@@ -19,6 +19,6 @@ def length_of_longest_substring(s)
     p max_len
 end
 
-
+# O(n^2)
 length_of_longest_substring("abcabcbb") #3 
 # passed leetcode test
