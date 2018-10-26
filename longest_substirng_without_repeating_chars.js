@@ -18,8 +18,7 @@ function lengthOfLongestSubstring(str) {
             currLen = i - hash[str[i]];
             for ( let j = 0; j < hash[str[i]]; j++) {
               if (hash[str[j]] === j) {
-               
-               
+                delete hash[str[j]];
               }
             }
             hash[str[i]] = i;
