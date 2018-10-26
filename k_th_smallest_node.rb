@@ -24,15 +24,17 @@ node5 = Node.new(5,node3,node6)
 
 class BST 
     attr_accessor :root
-    def initialize(root)
+    def initialize(root = nil)
         @root = root 
     end 
 
-    def insert(node)
-        if node.val < self.val 
-            
-        else 
-            
+    def insert(root = @root,val)
+        if root.nil? 
+            root = Node.new(val)
+        elsif val < root.val 
+            insert(root.left, val)
+        elsif val > root.val 
+            insert(root.right, val)
         end 
     end 
     
