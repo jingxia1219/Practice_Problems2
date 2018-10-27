@@ -45,23 +45,22 @@ class Node
       until nodes.empty?
        node, greatest_ancestor,smallest_ancestor = nodes.pop
         if (greatest_ancestor && node.val > greatest_ancestor )|| (smallest_ancestor && node.val < smallest_ancestor)
-        # check that all nodes in left subtree is less than root and all nodes 
-        #  in the right subtree is greater than the root on top of 
-        #  all left is less than direct parent and right is greater than direct parent
+            # check that all nodes in left subtree is less than root and all nodes 
+            #  in the right subtree is greater than the root on top of 
+            #  all left is less than direct parent and right is greater than direct parent
 
-        # e.g      root=50 
-        #          /      \
-        #        30       80
-        #       /  \     /   \
-        #     20   *60  70   90
-        # every right is greater than its direct parent, but 60 is not smaller than 
-        # its great parent
-
+            # e.g      root=50 
+            #          /      \
+            #        30       80
+            #       /  \     /   \
+            #     20   *60  70   90
+            # every right is greater than its direct parent, but 60 is not smaller than 
+            # its great parent
         return false 
         end 
         
         if node.left 
-           if node.left.val > node.val 
+           if node.left.val > node.val #checks the direct parent node relationship
              p 'line83'
                return false
            end 
@@ -69,6 +68,9 @@ class Node
         # return false if left.val > node.val 
         if greatest_ancestor.nil? || node.val > greatest_ancestor
          nodes << [node.left, node.val,smallest_ancestor]
+        #  DON'T use global variable greatest ancestor here as it will affect
+        #  the other side's subtree, but directly use the value in the greatest
+        #  ancestor's place will only pass the value down to its own line
          end 
           # greatest_ancestor = nil 
         end 
