@@ -31,11 +31,21 @@ class Node
           end 
         
       end
-    
-    
-     
     end 
     
+
+    def dfs(root,val)
+        nodes =[]
+        nodes << root
+        until nodes.empty? 
+          node = nodes.pop 
+          return node if node.val == val 
+        nodes << node.left if node.left 
+        nodes << node.right if node.right 
+        end 
+        nil
+      end 
+      
     
     node8 = Node.new(8)
     node6= Node.new(6,node8)
@@ -45,5 +55,7 @@ class Node
     node7 = Node.new(7)
     node3 = Node.new(3,node7)
     node1 = Node.new(1,node2,node3)
-    super_balanced?(node1)
     
+   p super_balanced?(node1)
+    
+   p dfs(node1, 3)
