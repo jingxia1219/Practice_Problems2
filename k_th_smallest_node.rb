@@ -9,11 +9,6 @@ class Node
     end 
 =    
 end 
-#node2 = Node.new(2)
-#left1 = Node.new(1,nil,node2)
-
-#right1 = Node.new(4,node2)
-#root = Node.new(3,left1,right1)
 
 node1 = Node.new(1)
 node2 = Node.new(2,node1)
@@ -36,16 +31,32 @@ class BST
         elsif val > root.val 
             insert(root.right, val)
         end 
+        return root 
     end 
     
-    def delete(val)
-        
+    def delete(root= @root, val)
+        if root.nil?
+            return nil 
+        elsif root.val == val 
+            if root.left.nil? && root.right.nil?
+                 return root = nil
+            elsif root.left 
+                root_right = root.right 
+                root = root.left 
+                root.right = root_right
+            else 
+                root = root.right 
+            end 
+        elsif val < root.val
+            delete(root.left,val)
+        else 
+            delete(root.right,val)
+        end  
     end 
 end 
 
 def kth_smallest(node,k)
     smallest = get_smallest(node)
-  #  kth_smallest_arr = []
     #o(logn)
     curr_node = smallest 
     p curr_node
