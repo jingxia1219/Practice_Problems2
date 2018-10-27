@@ -1,4 +1,3 @@
-# write a method that determines if a Binary Tree is super balanced, meaning if the shortest branch is at most 1 depth of compared to the longest branch 
 class Node 
     attr_accessor :val, :left, :right
       def initialize(val, left =nil,right=nil)
@@ -37,53 +36,67 @@ class Node
     end 
     
     
-    node8 = Node.new(8)
-    node6= Node.new(6,node8)
-    node4 = Node.new(4,node6)
-    node3 = Node.new(3)
-    node2 = Node.new(2, node4, node3)
-    node7 = Node.new(7)
-    node3 = Node.new(3,node7)
-    node1 = Node.new(1,node2,node3)
-    
-    # super_balanced?(node1)
-    
-    
-    def dfs(root,val)
-      nodes =[]
-      nodes << root
-      until nodes.empty? 
-        node = nodes.pop 
-        return node if node.val == val 
-      nodes << node.left if node.left 
-      nodes << node.right if node.right 
-      end 
-      nil
-    end 
-    
-    # dfs(node1,3)
-    
-    # write a method to check that a binary tree is a valid binary search tree.Check for left is smaller than parent and right is greater than parent 
-    
     def bst?(root)
       nodes = []
-      nodes << root
+      greatest_ancestor = nil
+      smallest_ancestor = nil
+      nodes << [root, greatest_ancestor, smallest_ancestor ]
+    
       until nodes.empty?
-       node = nodes.pop
+       node, greatest_ancestor,smallest_ancestor = nodes.pop
+        if (greatest_ancestor && node.val > greatest_ancestor )|| (smallest_ancestor && node.val < smallest_ancestor)
+        # check that all nodes in left subtree is less than root and all nodes 
+        #  in the right subtree is greater than the root on top of 
+        #  all left is less than direct parent and right is greater than direct parent
+
+        # e.g      root=50 
+        #          /      \
+        #        30       80
+        #       /  \     /   \
+        #     20   *60  70   90
+        # every right is greater than its direct parent, but 60 is not smaller than 
+        # its great parent
+
+        return false 
+        end 
+        
         if node.left 
-        return false if node.left.val > node.val 
-        nodes << node.left 
+           if node.left.val > node.val 
+             p 'line83'
+               return false
+           end 
+        # left = node.left
+        # return false if left.val > node.val 
+        if greatest_ancestor.nil? || node.val > greatest_ancestor
+         nodes << [node.left, node.val,smallest_ancestor]
+         end 
+          # greatest_ancestor = nil 
         end 
-        if node.right 
-        return false if node.right.val < node.val
-        nodes << node 
+    
+          if node.right 
+              if node.right.val < node.val
+              p 'line 94'
+                return false 
+              end 
+             if smallest_ancestor.nil? || 
+              node.val < smallest_ancestor
+    
+              nodes << [node.right, greatest_ancestor,node.val ]
+              end 
+              # smallest_ancestor = nil 
+          end 
         end 
+          true 
       end 
-      true 
-    end 
     
-    node11 = Node.new(11)
-    node13 = Node.new(13)
-    node12 = Node.new(12,node11,node13)
     
-    p bst?(node13)
+    
+    node20 = Node.new(20)
+    node60 = Node.new(60)
+    node30 = Node.new(30, node20,node60)
+    node70 = Node.new(70)
+    node90 = Node.new(90)
+    node80 = Node.new(80,node70,node90)
+    node50 = Node.new(50,node30, node80)
+    
+    p bst?(node50)
