@@ -37,6 +37,9 @@ class Node
     
     
     def bst?(root)
+        # Time complexity is O(n), for valid BST, we have to check all nodes
+        # Space complexity is O(n), greatest_ancestor and smallest O(1)
+        # nodes O(d) d being the depth/level
       nodes = []
       greatest_ancestor = nil
       smallest_ancestor = nil
@@ -68,6 +71,8 @@ class Node
         # return false if left.val > node.val 
         if greatest_ancestor.nil? || node.val > greatest_ancestor
          nodes << [node.left, node.val,smallest_ancestor]
+        else 
+            nodes << [node.left, greatest_ancestor,smallest_ancestor]
         #  DON'T use global variable greatest ancestor here as it will affect
         #  the other side's subtree, but directly use the value in the greatest
         #  ancestor's place will only pass the value down to its own line
@@ -80,10 +85,10 @@ class Node
               p 'line 94'
                 return false 
               end 
-             if smallest_ancestor.nil? || 
-              node.val < smallest_ancestor
-    
+             if smallest_ancestor.nil? || node.val < smallest_ancestor
               nodes << [node.right, greatest_ancestor,node.val ]
+             else 
+                nodes << [node.left, greatest_ancestor,smallest_ancestor]
               end 
               # smallest_ancestor = nil 
           end 
@@ -91,10 +96,36 @@ class Node
           true 
       end 
     
-    
+    def binary_search_tree?(root)
+  # start at the root, with an arbitrarily low lower bound
+  # and an arbitrarily high upper bound
+  node_and_bounds_stack = []
+  node_and_bounds_stack.push([root, -Float::INFINITY, Float::INFINITY])
+
+  # depth-first traversal
+  until node_and_bounds_stack.empty?
+    node, greatest_ancestor, smallest_ancestor = node_and_bounds_stack.pop
+
+    # if this node is invalid, we return false right away
+    return false if (node.value <= greatest_ancestor) || (node.value >= smallest_ancestor)
+
+    if node.left
+      # this node must be less than the current node
+      node_and_bounds_stack.push([node.left, greatest_ancestor, node.value])
+    end
+    if node.right
+      # this node must be greater than the current node
+      node_and_bounds_stack.push([node.right, node.value, smallest_ancestor])
+    end
+  end
+
+  # if none of the nodes were invalid, return true
+  # (at this point we have checked all nodes)
+  true
+end
     
     node20 = Node.new(20)
-    node60 = Node.new(60)
+    node60 = Node.new(40)
     node30 = Node.new(30, node20,node60)
     node70 = Node.new(70)
     node90 = Node.new(90)
