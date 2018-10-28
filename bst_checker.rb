@@ -207,8 +207,25 @@ class Node
         return sub_max
     end 
     p second_largest(node_3)
+
+    def bfs_search(root,val)
+        queue = []
+        queue.unshift(root)
+        until queue.empty?
+          node = queue.pop 
+          return root if root.val == val 
+      
+          if node.left 
+            queue.unshift(node.left)
+          end 
+          if node.right 
+            queue.unshift(node.right)
+          end 
+        end 
+      end 
+      
+      p bfs_search(root,3)
     # Time O(n) worse case O(logn) if balanced 
     # Space O(1)
 
 
-    
