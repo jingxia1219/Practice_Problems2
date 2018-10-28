@@ -16,10 +16,10 @@ class GraphNode
     graph_node1.neighbors[graph_node3] = true 
     graph_node2.neighbors[graph_node1] = true 
     # 
-    # graph_node2.neighbors[graph_node3] = true 
+    graph_node2.neighbors[graph_node3] = true 
     graph_node3.neighbors[graph_node1] = true 
     # 
-    # graph_node3.neighbors[graph_node2] = true
+    graph_node3.neighbors[graph_node2] = true
 
 def cyclic?(graph_node)
     print ' starting node : '
