@@ -193,11 +193,13 @@ class Node
         return parent 
       else 
        find_max(max.left)
+    #    O(n)
       end 
       
     end 
     
     def find_max(node)
+        # O(n)
      sub_max = node
         while sub_max.right
           sub_max = sub_max.right
@@ -205,3 +207,5 @@ class Node
         return sub_max
     end 
     p second_largest(node_3)
+    # Time O(n) worse case O(logn) if balanced 
+    # Space O(1)
