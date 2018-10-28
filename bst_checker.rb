@@ -213,19 +213,52 @@ class Node
         queue.unshift(root)
         until queue.empty?
           node = queue.pop 
-          return root if root.val == val 
-      
-          if node.left 
+          if root.val == val 
+            return root 
+          elsif node.left && val < root.val
             queue.unshift(node.left)
-          end 
-          if node.right 
+          elsif node.right && val > root.val
             queue.unshift(node.right)
           end 
         end 
       end 
-      
       p bfs_search(root,3)
     # Time O(n) worse case O(logn) if balanced 
     # Space O(1)
 
 
+# Find the node that is greater than the given node
+#       15
+#     /    \
+#   10      20
+#  /  \     / \
+# 8   12  16   25
+
+def in_order_successor(root,val)
+    queue = []
+    bigger_parent = nil
+    queue.unshift([root,bigger_parent])
+    until queue.empty?
+     node, bigger_parent = queue.pop 
+     if node.val == val 
+       if node.right
+         return find_max(node.right)
+       end 
+       return bigger_parent if bigger_parent
+     elsif val < node.val && node.left 
+       queue.unshift([node.left,node])
+     elsif val > node.val && node.right 
+       queue.unshift([node.right,bigger_parent])
+     end 
+   end 
+   end 
+   
+   node__8 = Node.new(8)
+   node__12 = Node.new(12)
+   node__16 = Node.new(16)
+   node__25 = Node.new(25)
+   node__20 = Node.new(20,node__16,node__25)
+   node__10 = Node.new(10, node__8,node__12)
+   node__15 = Node.new(15, node__10,node__20)
+   p in_order_successor(node__15, 8)
+     
