@@ -92,6 +92,8 @@ class Node
               end 
               # smallest_ancestor = nil 
           end 
+        #   p nodes
+
         end 
           true 
       end 
@@ -132,4 +134,21 @@ end
     node80 = Node.new(80,node70,node90)
     node50 = Node.new(50,node30, node80)
     
-    p bst?(node50)
+     bst?(node50)
+
+    node_left = Node.new(1)
+node_right3 = Node.new(5)
+node_right1 = Node.new(4,nil,node_right3)
+node_left2 = Node.new(2.5)
+node_right2 = Node.new(3,node_left2,node_right1)
+root = Node.new(2,node_left, node_right2)
+
+def second_largest(root)
+   min = root
+  while min.right
+    parent = min
+    min = min.right
+  end 
+  parent 
+end 
+p second_largest(root)
