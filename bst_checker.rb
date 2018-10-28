@@ -179,7 +179,7 @@ class Node
     
     def second_largest(root)
        max = root
-       if root.right.nil?
+       if root.right.nil? || root.nil?
        raise 'has to be at least two nodes to find the 2nd largest' if root.left.nil?
         return find_max(root.left)  
        end 
@@ -188,8 +188,7 @@ class Node
         parent = max
         max = max.right
       end 
-       p max
-      p max.left.nil?
+     
       if max.left.nil? 
         return parent 
       else 
