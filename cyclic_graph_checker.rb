@@ -52,3 +52,52 @@ def cyclic?(graph_node)
     end 
     
     p cyclic?(graph_node0)
+
+    def graph_coloring(graph_node, maximum_degree)
+        # Time: O(n*D)
+        colors = (0..maximum_degree).to_a 
+        queue = []
+        visited = {}
+        # from_node = nil 
+        queue.unshift(graph_node)
+        until queue.empty?
+            # O(n)
+          node = queue.pop
+          neighbor_colors = {}
+          
+          node.neighbors.each do |neighbor,_|
+            # O(D)
+            neighbor_colors[neighbor.color] = true if neighbor.color
+          end 
+          print "node itself:"
+          p node
+          print 'neighbor_colors hash:::'
+          p neighbor_colors
+          
+          colors.each do |color|
+            # O(D+1) 
+          # p color
+            node.color = color unless neighbor_colors[color]
+            if node.color
+              visited[node] = true
+              next
+            end 
+          end 
+          print 'this node color is :  '
+          p node.color
+          new_neighbors = node.neighbors.dup 
+          new_neighbors.delete_if { |k,v| visited[k] }
+      
+           new_neighbors.each do |k,v|
+            queue.unshift(k)
+          end 
+              # node.neighbors[node] = true
+        end 
+      end 
+      
+      graph_coloring(graph_node0,2)
+      p graph_node1.neighbors
+      p graph_node0.color
+      p graph_node1.color
+      p graph_node2.color 
+      p graph_node3.color
