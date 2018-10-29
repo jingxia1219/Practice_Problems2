@@ -87,8 +87,9 @@ def cyclic?(graph_node)
           p node.color
           new_neighbors = node.neighbors.dup 
           new_neighbors.delete_if { |k,v| visited[k] }
-      
+          
            new_neighbors.each do |k,v|
+            # Time O(D)
             queue.unshift(k)
           end 
               # node.neighbors[node] = true
