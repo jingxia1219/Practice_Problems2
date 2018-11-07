@@ -250,8 +250,6 @@ class Node
     end 
     end 
     
-
-    
     
     node__8 = Node.new(8)
     node__12 = Node.new(12)
