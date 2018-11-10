@@ -33,26 +33,36 @@
   <div class="flex-container">
     <div  class="row">
         <span class="flex-item" id='date'>
-            <script> 
-                let date = document.getElementById('date');
-                date.innerHTML = dateFormatted;
-            </script>
+                <script> 
+                    let formatDate = document.getElementById('date');
+                    function updateDate () { 
+                        var d1 = new Date().toString().split(" ")
+                        d1 = d1[1] + " " + d1[2];
+                        formatDate.innerHTML = d1;
+                        }   
+                        setInterval(updateDate,1000)
+                </script>
         </span>
     </div>
     <div class="row">
       <span class="flex-item" id='day'>
-        <script> 
-            let day = document.getElementById('day');
-            day.innerHTML = dayFormatted;
-        </script>
+            <script> 
+                let formatDay = document.getElementById('day');
+                function updateDay () { 
+                    var d3 = new Date().toString()
+                    formatDay.innerHTML = d3.split(" ")[0];
+                    }   
+                    setInterval(updateDay,1000)
+                </script>
       </span>
     </div>
+
     <div class="row">
       <span class="flex-item" id='time'>
         <script> 
+        let formatTime = document.getElementById('time');
             function updateTime () { 
                 var d2 = new Date().toString()
-                let formatTime = document.getElementById('time');
                 formatTime.innerHTML = d2.split(" ")[4];
             }   
             setInterval(updateTime,1000)
