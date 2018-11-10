@@ -6,9 +6,9 @@
   justify-content: center;
   text-align: center
   }
-  .row {
+  /* .row {
     width: 50%;
-  }
+  } */
   .flex-item {
     /* max-width: 50%; */
     background: tomato;
@@ -24,18 +24,39 @@
   }
 </style>
 <script>
-    let d = new Date();
-    let formatedDate;
-    
+    let d = new Date().toString();
+    let arr = d.split(" ");
+    let dayFormatted = arr[0];
+    let dateFormatted = arr[1]+ " " + arr[2];
+    let timeFormatted = arr[4];
 </script>
   <div class="flex-container">
     <div  class="row">
         <span class="flex-item" id='date'>
             <script> 
                 let date = document.getElementById('date');
-                date.innerHTML = d;
+                date.innerHTML = dateFormatted;
             </script>
         </span>
     </div>
-    
+    <div class="row">
+      <span class="flex-item" id='day'>
+        <script> 
+            let day = document.getElementById('day');
+            day.innerHTML = dayFormatted;
+        </script>
+      </span>
+    </div>
+    <div class="row">
+      <span class="flex-item" id='time'>
+        <script> 
+            function updateTime () { 
+                var d2 = new Date().toString()
+                let formatTime = document.getElementById('time');
+                formatTime.innerHTML = d2.split(" ")[4];
+            }   
+            setInterval(updateTime,1000)
+        </script>
+      </span>
+    </div>
   </div>
