@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">This is a p element with id="demo".</p>
+
+<ul>Click the button to change the text of the p element.</ul>
+
+<button onclick="myFunction()">Try it</button>
+<style>
+button {
+	background-color: orange;
+    border: 0;
+    height: 25px;
+    width: 20%;
+    padding: 10px 10px 20px 10px;
+    position: fixed;
+    top: 80%;
+    left:70%;
+}
+li {
+background-color: pink;
+}
+</style>
+
+<script>
+function myFunction() {
+	var demo = document.querySelector("#demo");
+    var li = document.createElement("li");
+    var text = document.createTextNode("Hello, World!");
+    li.appendChild(text);
+    demo.appendChild(li);
+}
+</script>
+
+</body>
+</html>
