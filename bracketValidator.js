@@ -1,7 +1,3 @@
-// "{ [ ] ( ) }" should return true
-// "{ [ ( ] ) }" should return false
-// "{ [ }" should return false
-
 function bracketValidator(str) {
     var obj = new Object();
     obj['curlyOpener'] = obj['bracketOpener'] = obj['parenOpener'] = obj["curlyCloser"] = obj["bracketCloser"] = obj["parenCloser"] = 0;
@@ -14,7 +10,7 @@ function bracketValidator(str) {
       }
       if (str[i] === '}') {
          obj["curlyCloser"]++;
-            if (lastOpen !== "curly") {
+            if (lastOpen !== "curly" && lastOpen !== null) {
            return false;
          }
         lastOpen = null;
@@ -25,7 +21,7 @@ function bracketValidator(str) {
       }
        if (str[i] === ']') {
          obj["bracketCloser"]++;
-            if (lastOpen !== "bracket") {
+            if (lastOpen !== "bracket" && lastOpen !== null) {
            return false;
          }
          lastOpen = null;
@@ -36,7 +32,7 @@ function bracketValidator(str) {
       }
       if (str[i] === ')') {
          obj["parenCloser"]++;
-         if (lastOpen !== "paren") {
+         if (lastOpen !== "paren" && lastOpen !== null) {
            return false;
          }
          lastOpen = null;
@@ -47,6 +43,3 @@ function bracketValidator(str) {
       }
       return true;
   }
-  
-   bracketValidator("(){[}]")
-  
