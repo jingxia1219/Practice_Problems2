@@ -1,41 +1,41 @@
 function bracketValidator(str) {
     var obj = new Object();
     obj['curlyOpener'] = obj['bracketOpener'] = obj['parenOpener'] = obj["curlyCloser"] = obj["bracketCloser"] = obj["parenCloser"] = 0;
-    var lastOpen; 
+    var lastOpen = []; 
   
     for (let i = 0; i < str.length; i ++) {
        if (str[i] === '{') {
          obj["curlyOpener"]++;
-         lastOpen = "curly";
+         lastOpen.unshift("curly");
       }
       if (str[i] === '}') {
          obj["curlyCloser"]++;
-            if (lastOpen !== "curly" && lastOpen !== null) {
+            if (lastOpen[0] !== 'curly' ) {
            return false;
          }
-        lastOpen = null;
+        lastOpen.shift();
       }
       if (str[i] === '[') {
          obj["bracketOpener"]++;
-         lastOpen = 'bracket';
+         lastOpen.unshift('bracket');
       }
        if (str[i] === ']') {
          obj["bracketCloser"]++;
-            if (lastOpen !== "bracket" && lastOpen !== null) {
+            if (lastOpen[0] !== 'bracket') {
            return false;
          }
-         lastOpen = null;
+         lastOpen.shift();
       }
       if (str[i] === '(') {
          obj["parenOpener"]++;
-         lastOpen = 'paren'
+         lastOpen.unshift('paren');
       }
       if (str[i] === ')') {
          obj["parenCloser"]++;
-         if (lastOpen !== "paren" && lastOpen !== null) {
+         if (lastOpen[0] !== 'paren') {
            return false;
          }
-         lastOpen = null;
+         lastOpen.shift();
       }
     }
       if (obj['curlyOpener'] !== obj['curlyCloser'] || obj['parenOpener'] !== obj['parenCloser'] || obj['bracketOpener']!== obj['bracketCloser']) {
@@ -43,3 +43,5 @@ function bracketValidator(str) {
       }
       return true;
   }
+  
+   bracketValidator("[{]}")
