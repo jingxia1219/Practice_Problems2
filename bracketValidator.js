@@ -2,8 +2,9 @@ function bracketValidator(str) {
     var obj = new Object();
     obj['curlyOpener'] = obj['bracketOpener'] = obj['parenOpener'] = obj["curlyCloser"] = obj["bracketCloser"] = obj["parenCloser"] = 0;
     var lastOpen = []; 
-  
+//   Space O(n)
     for (let i = 0; i < str.length; i ++) {
+        // Time O(n)
        if (str[i] === '{') {
          obj["curlyOpener"]++;
          lastOpen.unshift("curly");
