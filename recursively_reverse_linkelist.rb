@@ -24,7 +24,6 @@ class Node
         # print 'head_after'
         # p head
         #     p '----------'
-        
         # print "next_n: " 
         # p next_n
         #     p '----------------------'
