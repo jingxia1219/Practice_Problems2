@@ -8,22 +8,6 @@ class Node
     end 
     
     
-    # p node1
-    # 1 => 2 => 3 => nil 
-    # return 3 => 2 =>1 => nil
-    
-     # 1 => 2 => 3
-     # placeholder = 3
-     # 2 => 1
-    #  def reverse_linkedlist(head)
-    #     return head if head.nil?
-    #     reverse_linkedlist(head.next_node)
-    #     next_n = head.next_node 
-    #     next_n.next_node = head 
-    #     head.next_node = nil 
-    #  end
-
-    # node3 = Node.new(3)
     node2 = Node.new(2)
     node1 = Node.new(1,node2) #head
 
