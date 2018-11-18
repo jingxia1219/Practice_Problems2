@@ -25,7 +25,6 @@ class Node
         # p head
         #     p '----------'
         # print "next_n: " 
-        
         # p next_n
         #     p '----------------------'
         reverse_linkedlist(next_n,head)
