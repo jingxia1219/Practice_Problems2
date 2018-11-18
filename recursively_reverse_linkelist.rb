@@ -18,15 +18,16 @@ class Node
         
         head.next_node = prev 
         # p "head_after: #{head.next_node.val}" 
-        print 'prev: '
-        p prev
-        p '-----'
-        print 'head_after'
-        p head
-            p '----------'
-        print "next_n: " 
-        p next_n
-            p '----------------------'
+        # print 'prev: '
+        # p prev
+        # p '-----'
+        # print 'head_after'
+        # p head
+        #     p '----------'
+        # print "next_n: " 
+        
+        # p next_n
+        #     p '----------------------'
         reverse_linkedlist(next_n,head)
       end 
  
