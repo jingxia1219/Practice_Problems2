@@ -36,3 +36,4 @@ end
 p valid_str?("({})")
 p valid_str?("[{]}")
 p valid_str?("({[")
+p valid_str?("{[]}()")
