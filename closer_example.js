@@ -19,3 +19,13 @@ for (let i = 0; i < 5; i++) {
 for (var i = 0; i < 5; i++) {
 	setTimeout(function() { console.log(i); }, i * 1000 );
 }
+
+function traverse (DOM, cb){
+    if (DOM) {
+    cb(DOM);
+    }
+    var childrenList = DOM.children;
+    for (let i = 0; i < childrenList.length;i++) {
+        traverse(childrenList[i],cb);
+    }
+}
