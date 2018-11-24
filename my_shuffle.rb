@@ -7,7 +7,7 @@ def my_shuffle(array)
     until array.empty?
         # Time O(n)
         # Space O(n)
-     index = (0..array.length-1).to_a.sample
+     index = rand(array.length)
       result << array[index]
       array.delete_at(index)
     end 
@@ -21,8 +21,8 @@ def in_place_shuffle(arr)
     #   randomly pick 2 indices and swap them 
     #   do it for arr.length times 
       arr.length.times do |i|
-        idx1 = (0...arr.length).to_a.sample 
-        idx2 = (0...arr.length).to_a.sample 
+        idx1 = rand(arr.length)
+        idx2 = rand(arr.length)
         arr[idx1],arr[idx2] = arr[idx2],arr[idx1]
       end 
       arr
