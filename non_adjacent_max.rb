@@ -13,6 +13,8 @@
 # EDGE case: if arr.length <=2 
 
 def max_sum(arr)
+    # Time O(n)
+    # Space O(n)
     if arr.length < 3 
       return arr.max 
     end 
