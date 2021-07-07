@@ -1,0 +1,72 @@
+<style>
+.flex-container {
+    height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center
+  }
+  /* .row {
+    width: 50%;
+  } */
+  .flex-item {
+    /* max-width: 50%; */
+    background: tomato;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+</style>
+<script>
+    let d = new Date().toString();
+    let arr = d.split(" ");
+    let dayFormatted = arr[0];
+    let dateFormatted = arr[1]+ " " + arr[2];
+    let timeFormatted = arr[4];
+</script>
+  <div class="flex-container">
+    <div  class="row">
+        <span class="flex-item" id='date'>
+                <script> 
+                    let formatDate = document.getElementById('date');
+                    function updateDate () { 
+                        var d1 = new Date().toString().split(" ")
+                        d1 = d1[1] + " " + d1[2];
+                        formatDate.innerHTML = d1;
+                        }   
+                        setInterval(updateDate,1000)
+                </script>
+        </span>
+    </div>
+    <div class="row">
+      <span class="flex-item" id='day'>
+            <script> 
+                let formatDay = document.getElementById('day');
+                function updateDay () { 
+                    var d3 = new Date().toString()
+                    formatDay.innerHTML = d3.split(" ")[0];
+                    }   
+                    setInterval(updateDay,1000)
+                </script>
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="flex-item" id='time'>
+        <script> 
+        let formatTime = document.getElementById('time');
+            function updateTime () { 
+                var d2 = new Date().toString()
+                formatTime.innerHTML = d2.split(" ")[4];
+            }   
+            setInterval(updateTime,1000)
+        </script>
+      </span>
+    </div>
+  </div>
